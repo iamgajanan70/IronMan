@@ -2,7 +2,7 @@
 
 A visually immersive, single-page web application dedicated to Iron Man and Tony Stark. Built with modern frontend technologies, this project delivers a cinematic storytelling experience through interactive sections, dynamic layouts, bold typography, and high-quality visual design inspired by the Marvel Cinematic Universe.
 
-![Project Preview](https://i.ibb.co/Cp5NRT8C/THEIRONMAN-Google-Chrome2026-06-0212-17-07-ezgif-com-video-to-gif-converter.gif)
+![Project Preview](https://i.ibb.co/YFd4Jv1t/ezgif-44c50b2f164b22d9.gif)
 
 ---
 
@@ -71,6 +71,8 @@ Ironman/
 │   ├── assets/
 │   │
 │   ├── components/
+│   │   ├── FluidCursor.css
+│   │   ├── FluidCursor.jsx
 │   │   ├── Hero.jsx
 │   │   ├── Hero.css
 │   │   ├── Navbar.jsx
