@@ -1,0 +1,86 @@
+/* ================================================
+   MINIMAL TECH CURSOR
+   ================================================ */
+
+/* Hide native cursor globally */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+.liquid-cursor-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+/* Precise Minimal Dot */
+.cursor-dot-simple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.1s linear, background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+  mix-blend-mode: difference;
+  z-index: 10;
+}
+
+.cursor-dot-simple.visible {
+  opacity: 1;
+}
+
+.cursor-dot-simple.hovering {
+  width: 4px;
+  height: 4px;
+  background-color: #00d2ff; /* Arc Blue */
+}
+
+/* ====================================================
+   LABELS — Following smoothed position
+   ==================================================== */
+.cursor-label-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cursor-label-wrapper.visible {
+  opacity: 1;
+}
+
+.cursor-label-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-transform: uppercase;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  mix-blend-mode: difference;
+}
+
+/* Show label text on hover states */
+.cursor-label-text.link,
+.cursor-label-text.image,
+.cursor-label-text.text {
+  opacity: 1;
+  transform: translateY(24px);
+}

@@ -1,33 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap');
-
-:root {
-  --red: #C0001A;
-  --red-glow: rgba(192, 0, 26, 0.65);
-  --red-glow2: rgba(192, 0, 26, 0.35);
-  --gold: #C9A44A;
-}
-
 /* ── Hero ────────────────────────────────── */
 .hero {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
+  background: #000;
 }
 
-/* gold/red top accent line */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), var(--red), var(--gold), transparent);
-  z-index: 10;
-}
-
-/* ── Canvas — fills hero, sits behind everything ── */
+/* ── Canvas ── */
 .hero-canvas {
   position: absolute;
   inset: 0;
@@ -36,14 +16,7 @@
   z-index: 0;
 }
 
-/* ── Navbar above canvas ── */
-.hero>div:first-of-type {
-  position: relative;
-  z-index: 20;
-  width: 100%;
-}
-
-/* ── Hero content above canvas ── */
+/* ── Hero content ── */
 .hero-content {
   position: absolute;
   inset: 0;
@@ -56,26 +29,26 @@
   pointer-events: all;
 }
 
-/* ── Left panel ──────────────────────────── */
+/* ── Left panel (Standard) ──────────────────────────── */
 .left {
   position: absolute;
-  bottom: 50px;
-  left: 50px;
-  width: 300px;
+  bottom: 80px;
+  left: 80px;
+  width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  z-index: 10;
+  gap: 24px;
 }
 
 .st-eyebrow {
   display: inline-block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.35em;
-  color: var(--gold);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--arc-blue);
   text-transform: uppercase;
-  padding-left: 1.4rem;
+  padding-left: 1.5rem;
   position: relative;
 }
 
@@ -85,111 +58,109 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 1rem;
-  height: 1.5px;
-  background: var(--gold);
+  width: 1.2rem;
+  height: 1px;
+  background: var(--arc-blue);
 }
 
 .right-eyebrow {
-  color: #ff4455;
+  color: var(--red);
 }
 
 .right-eyebrow::before {
-  background: #ff4455;
+  background: var(--red);
 }
 
 .st-title {
-  font-family: 'Anton', sans-serif;
-  font-size: 70px;
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 700;
+  font-size: 58px;
   color: #fff;
   text-transform: uppercase;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  text-shadow:
-    3px 3px 0px #7A000F,
-    0 0 12px var(--red-glow),
-    0 0 30px var(--red-glow2);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
 }
 
 .st-desc {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 17px;
-  font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
   font-weight: 300;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.01em;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
 }
 
+/* ── Scifi-Tech Button ── */
 .st-btn {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 17px;
-  letter-spacing: 0.22em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  padding: 15px;
-  background-color: transparent;
+  padding: 18px 45px;
+  background: rgba(0, 210, 255, 0.03);
   color: #fff;
-  border: 1.5px solid var(--red);
-  border-radius: 0;
+  border: 1px solid rgba(0, 210, 255, 0.25);
   cursor: pointer;
-  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
   position: relative;
   overflow: hidden;
-  isolation: isolate;
-  transition: border-color 0.3s ease;
-}
-
-.st-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--red);
-  transform: translateX(-105%) skewX(-6deg);
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: -1;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 
 .st-btn:hover {
-  border-color: #E8001F;
+  background: rgba(0, 210, 255, 0.1);
+  border-color: var(--arc-blue);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+  transform: translateY(-2px);
 }
 
-.st-btn:hover::after {
-  transform: translateX(0) skewX(-6deg);
+.st-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.3), transparent);
+}
+
+.st-btn:hover::before {
+  left: 100%;
+  transition: left 0.8s ease;
 }
 
 /* ── Right panel ─────────────────────────── */
 .right {
   position: absolute;
-  bottom: 100px;
-  right: 50px;
-  /* ← FIXED from -50px */
+  bottom: 120px;
+  right: 80px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  z-index: 10;
+  gap: 24px;
 }
 
 .right::before {
   content: '';
   display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--gold);
-  margin-bottom: -10px;
+  width: 60px;
+  height: 1px;
+  background: var(--red);
 }
 
 .right .st-title {
-  font-size: 60px;
-  width: 470px;
+  font-size: 52px;
+  width: 500px;
 }
 
 .st-text {
-  font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 19px;
-  font-style: italic;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
   font-weight: 300;
-  width: 400px;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.72);
-  letter-spacing: 0.01em;
+  width: 440px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.02em;
 }

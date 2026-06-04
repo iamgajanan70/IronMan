@@ -7,10 +7,10 @@ const Navbar = () => {
       <div className="nav-logo">THE <span>AVENGER</span></div>
 
       <ul className="nav-links">
-        <li>The Villains</li>
-        <li>Tony Stark</li>
-        <li>The suits</li>
-        <li>The Mission</li>
+        <li data-cursor="link">The Villains</li>
+        <li data-cursor="link">Tony Stark</li>
+        <li data-cursor="link">The suits</li>
+        <li data-cursor="link">The Mission</li>
       </ul>
     </nav>
   )

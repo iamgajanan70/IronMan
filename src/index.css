@@ -1,4 +1,22 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syncopate:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+:root {
+  --red: #E8001F;
+  --arc-blue: #00d2ff;
+  --gold: #FFD700;
+  --bg-dark: #050505;
+}
+
+* {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: #fff;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
 }
