@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>STARK_OS // SYNCHRONIZING</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#afc6ff",
+            "on-secondary": "#002d6d",
+            "on-primary-container": "#006a71",
+            "outline": "#849495",
+            "surface": "#111318",
+            "inverse-primary": "#00696f",
+            "on-secondary-container": "#002760",
+            "surface-variant": "#333539",
+            "primary-container": "#00f2ff",
+            "surface-container-high": "#282a2e",
+            "tertiary-container": "#ffd0cb",
+            "error": "#ffb4ab",
+            "inverse-surface": "#e2e2e8",
+            "surface-bright": "#37393e",
+            "surface-dim": "#111318",
+            "surface-container-highest": "#333539",
+            "outline-variant": "#3a494b",
+            "surface-tint": "#00dbe7",
+            "background": "#0c0e12",
+            "secondary": "#afc6ff",
+            "on-secondary-fixed-variant": "#00429a",
+            "on-error-container": "#ffdad6",
+            "secondary-container": "#548dff",
+            "surface-container-lowest": "#0c0e12",
+            "surface-container-low": "#1a1c20",
+            "on-error": "#690005",
+            "on-background": "#e2e2e8",
+            "on-surface-variant": "#b9cacb",
+            "on-tertiary": "#680008",
+            "on-primary": "#00363a",
+            "primary-fixed-dim": "#00dbe7",
+            "primary-fixed": "#74f5ff",
+            "on-primary-fixed-variant": "#004f54",
+            "tertiary": "#fff5f4",
+            "tertiary-fixed": "#ffdad6",
+            "surface-container": "#1e2024",
+            "on-primary-fixed": "#002022",
+            "on-tertiary-container": "#c20018",
+            "on-surface": "#e2e2e8",
+            "primary": "#e1fdff",
+            "on-tertiary-fixed": "#410003",
+            "on-secondary-fixed": "#001944",
+            "secondary-fixed": "#d9e2ff",
+            "on-tertiary-fixed-variant": "#930010",
+            "inverse-on-surface": "#2f3035",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#ffb3ac",
+            "stark-gold": "#C5A059"
+          },
+          "fontFamily": {
+            "display-lg": ["Space Grotesk"],
+            "code-sm": ["JetBrains Mono"],
+            "label-caps": ["JetBrains Mono"],
+            "body-md": ["Geist"]
+          },
+          "fontSize": {
+            "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "code-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0c0e12;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .percentage-bg {
+      font-size: 25vw;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.04);
+      font-weight: 900;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen relative font-body-md text-on-surface bg-background">
+<!-- Background Fixed Elements -->
+<div class="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
+<div class="percentage-bg font-display-lg" id="percent-display-bg">0%</div>
+</div>
+<!-- Main UI Overlay -->
+<div class="relative z-10 flex flex-col items-center w-full max-w-2xl px-8">
+<!-- Subtly integrated Arc Reactor -->
+<div class="mb-8 opacity-40 hover:opacity-100 transition-opacity duration-700">
+<img alt="Arc Reactor" class="w-16 h-16 md:w-20 md:h-20 object-contain brightness-75 contrast-125" src="https://lh3.googleusercontent.com/aida/AP1WRLuoqhCbAtp9catnLaBH_UY0ouA47cooMaYKD--p0ENOxnyg5KJfu8YxqeLUh5gr1Tsw3d0CrDeGwa9bp4GLIwKBEnilwz_W_pzZbG0Kq3JlD9kDZ56pJkgG1bMUOpHVOnnHJ3BM2Q0I60L7azuRcKByCo7zZDfIK8j86q5NsEd9JM1mPFnPOGEuqdlmA_GvN9bAgqf9PT_iZ2BJi_TOqf3maC5tkL8XgS5DByi87utTgftz-ycFh0a2"/>
+</div>
+<!-- Progress Bar Container -->
+<div class="w-full h-[1px] bg-white/10 relative overflow-hidden mb-4">
+<div class="absolute top-0 left-0 h-full bg-white transition-all duration-300 ease-out shadow-[0_0_8px_rgba(255,255,255,0.8)]" id="progress-fill" style="width: 0%;"></div>
+</div>
+<!-- Status Text -->
+<div class="text-center">
+<span class="font-label-caps text-[10px] md:text-xs tracking-[0.4em] text-stark-gold uppercase animate-pulse-subtle">
+      SYNCHRONIZING ASSETS
+    </span>
+</div>
+</div>
+<!-- Bottom Status (Optional metadata to keep the HUD feel) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 text-center z-20">
+<div class="font-code-sm text-[10px] text-on-surface-variant/30 uppercase tracking-widest">
+    STARK_OS // MK_85_RECOVERY_PROTOCOL
+  </div>
+</div>
+<script>
+    let progress = 0;
+    const progressFill = document.getElementById('progress-fill');
+    const percentBg = document.getElementById('percent-display-bg');
+
+    function updateProgress() {
+      if (progress < 100) {
+        // Variable speed for realism
+        const increment = Math.random() * 0.8;
+        progress += increment;
+        
+        if (progress > 100) progress = 100;
+        
+        const roundedProgress = Math.floor(progress);
+        
+        // Update bar
+        progressFill.style.width = `${progress}%`;
+        
+        // Update large background percentage
+        percentBg.innerText = `${roundedProgress}%`;
+
+        // Adjust background visibility slightly as it completes
+        const opacity = 0.04 + (progress / 100) * 0.02;
+        percentBg.style.color = `rgba(255, 255, 255, ${opacity})`;
+
+        requestAnimationFrame(updateProgress);
+      } else {
+        percentBg.innerText = "100%";
+        progressFill.style.width = "100%";
+        // Final state glow or pulse could be added here
+      }
+    }
+
+    // Brief initialization delay
+    setTimeout(() => {
+      updateProgress();
+    }, 500);
+  </script>
+</body></html>
