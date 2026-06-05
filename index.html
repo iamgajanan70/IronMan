@@ -104,59 +104,7 @@
     }
   </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen relative font-body-md text-on-surface bg-background">
-  <div id="loading-screen">
-    <div class="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
-      <div class="percentage-bg font-display-lg" id="percent-display-bg">0%</div>
-    </div>
-    <div class="relative z-10 flex flex-col items-center w-full max-w-2xl px-8">
-      <div class="mb-8 opacity-40 hover:opacity-100 transition-opacity duration-700">
-        <img alt="Arc Reactor" class="w-16 h-16 md:w-20 md:h-20 object-contain brightness-75 contrast-125" src="https://lh3.googleusercontent.com/aida/AP1WRLuoqhCbAtp9catnLaBH_UY0ouA47cooMaYKD--p0ENOxnyg5KJfu8YxqeLUh5gr1Tsw3d0CrDeGwa9bp4GLIwKBEnilwz_W_pzZbG0Kq3JlD9kDZ56pJkgG1bMUOpHVOnnHJ3BM2Q0I60L7azuRcKByCo7zZDfIK8j86q5NsEd9JM1mPFnPOGEuqdlmA_GvN9bAgqf9PT_iZ2BJi_TOqf3maC5tkL8XgS5DByi87utTgftz-ycFh0a2"/>
-      </div>
-      <div class="w-full h-[1px] bg-white/10 relative overflow-hidden mb-4">
-        <div class="absolute top-0 left-0 h-full bg-white transition-all duration-300 ease-out shadow-[0_0_8px_rgba(255,255,255,0.8)]" id="progress-fill" style="width: 0%;"></div>
-      </div>
-      <div class="text-center">
-        <span class="font-label-caps text-[10px] md:text-xs tracking-[0.4em] text-stark-gold uppercase animate-pulse-subtle">
-          SYNCHRONIZING ASSETS
-        </span>
-      </div>
-    </div>
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 text-center z-20">
-      <div class="font-code-sm text-[10px] text-on-surface-variant/30 uppercase tracking-widest">
-        STARK_OS // MK_85_RECOVERY_PROTOCOL
-      </div>
-    </div>
-    <script>
-      let progress = 0;
-      const progressFill = document.getElementById('progress-fill');
-      const percentBg = document.getElementById('percent-display-bg');
-
-      function updateProgress() {
-        if (progress < 100) {
-          const increment = Math.random() * 0.8;
-          progress += increment;
-          if (progress > 100) progress = 100;
-          const roundedProgress = Math.floor(progress);
-          progressFill.style.width = `${progress}%`;
-          percentBg.innerText = `${roundedProgress}%`;
-          const opacity = 0.04 + (progress / 100) * 0.02;
-          percentBg.style.color = `rgba(255, 255, 255, ${opacity})`;
-          requestAnimationFrame(updateProgress);
-        } else {
-          percentBg.innerText = "100%";
-          progressFill.style.width = "100%";
-        }
-      }
-      setTimeout(() => { updateProgress(); }, 500);
-    </script>
-    <script>
-      setTimeout(() => {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) loadingScreen.remove();
-      }, 5000);
-    </script>
-  </div>
+<body class="bg-background text-on-surface font-body-md overflow-hidden m-0">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
