@@ -39,19 +39,19 @@ Designed as a portfolio-grade frontend project, it demonstrates advanced UI/UX p
 - Optimized loading performance
 
 ### 🦸 Content Sections
-- Hero Banner
-- Tony Stark Biography
-- Iron Man Suit Collection
-- Villains Showcase
-- MCU Timeline References
-- Character Insights
+- Hero Banner.
+- Tony Stark Biography.
+- Iron Man Suit Collection.
+- Villains Showcase.
+- MCU Timeline References.
+- Character Insights.
 
 ### 🛠 Technical Features
-- React Component Architecture
-- Vite Development Environment
-- Reusable UI Components
-- CSS Modular Styling
-- Mobile-First Design Approach
+- React Component Architecture.
+- Vite Development Environment.
+- Reusable UI Components.
+- CSS Modular Styling.
+- Mobile-First Design Approach.
 
 ---
 
